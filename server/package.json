@@ -1,6 +1,7 @@
 {
   "name": "borrowback-server",
   "version": "1.0.0",
+  "license": "MIT",
   "description": "BorrowBack Express REST API backend",
   "main": "dist/server.js",
   "scripts": {
