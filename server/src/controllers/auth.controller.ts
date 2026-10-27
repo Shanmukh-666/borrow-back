@@ -5,13 +5,19 @@ import { User } from '../models/User';
 import { AuthRequest } from '../middleware/auth.middleware';
 import { AppError } from '../services/requestLifecycle.service';
 
-const getCookieOptions = () => ({
-  httpOnly: true,
-  secure: process.env.NODE_ENV === 'production',
-  sameSite: 'lax' as const,
-  path: '/',
-  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-});
+const getCookieOptions = (isClearing = false) => {
+  const isProd = process.env.NODE_ENV === 'production';
+  const configuredSameSite = process.env.COOKIE_SAME_SITE as 'lax' | 'none' | 'strict' | undefined;
+  const sameSite = configuredSameSite || (isProd ? 'none' : 'lax');
+
+  return {
+    httpOnly: true,
+    secure: isProd || sameSite === 'none',
+    sameSite,
+    path: '/',
+    ...(isClearing ? {} : { maxAge: 7 * 24 * 60 * 60 * 1000 }), // 7 days
+  };
+};
 
 const generateToken = (payload: { id: string; email: string; name: string }): string => {
   const secret = process.env.JWT_SECRET || 'borrowback_development_super_secret_jwt_key_at_least_32_characters';
@@ -128,7 +134,7 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
 };
 
 export const logout = (_req: Request, res: Response): void => {
-  res.clearCookie('token', { path: '/' });
+  res.clearCookie('token', getCookieOptions(true));
   res.status(200).json({
     success: true,
     message: 'Logged out successfully',

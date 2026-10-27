@@ -161,22 +161,25 @@ npm run dev
 Both frontend and backend compile strictly with zero TypeScript errors:
 
 ```bash
-# Build backend TypeScript into server/dist
-cd server
+# Build both client and server from repository root
 npm run build
 
-# Build frontend into client/dist
-cd client
-npm run build
+# Or build individually
+npm run build:client
+npm run build:server
 ```
 
 ---
 
 ## 8. Verification & Acceptance Tests
 
-The test suite validates all 15 scenarios from Section 19 of the specification (`A1` through `A15`):
+The automated test suite validates all 15 scenarios from the core specification (`A1` through `A15`):
 
 ```bash
+# Run acceptance test suite directly from root
+npm test
+
+# Or within server
 cd server
 npm run test:acceptance
 ```
@@ -200,16 +203,38 @@ npm run test:acceptance
 
 ---
 
-## 9. Implemented Pages & Routes
+## 9. Production Deployment Guide
+
+BorrowBack is structured for straightforward full-stack deployment:
+
+### Backend (e.g. Render, Railway, AWS ECS)
+1. **Build command:** `npm run build:server`
+2. **Start command:** `npm start` (executes `node dist/server.js`)
+3. **Environment variables:**
+   - `PORT=5000`
+   - `MONGODB_URI=<your-mongodb-atlas-connection-string>`
+   - `JWT_SECRET=<strong-random-key>`
+   - `CLIENT_ORIGIN=https://<your-frontend-domain>.vercel.app`
+   - `NODE_ENV=production`
+
+### Frontend (e.g. Vercel, Netlify, Cloudflare Pages)
+1. **Root directory:** `client`
+2. **Build command:** `npm run build`
+3. **Output directory:** `dist`
+4. **Environment variable:** `VITE_API_URL=https://<your-backend-domain>/api`
+
+---
+
+## 10. Implemented Pages & Routes
 
 | Path | Page Component | Access | Purpose |
 |---|---|---|---|
 | `/` | `HomePage` | Public | Hero, 3 sample item cards, trust strip, how it works, categories, recent listings, closing CTA. |
 | `/browse` | `BrowseItemsPage` | Public | Search (title/description), category, condition, sort filters, pagination. |
-| `/items/:id` | `ItemDetailsPage` | Public | Category illustration tile, details, safe owner summary, date request panel. |
+| `/items/:id` | `ItemDetailsPage` | Public | Item image tile, details, safe owner summary, date request panel. |
 | `/login` | `LoginPage` | Public | Sign in form, show/hide password, redirect to intended destination. |
 | `/register` | `RegisterPage` | Public | Sign up form with inline validation. |
-| `/items/new` | `CreateItemPage` | Signed in | Create listing form with required markers and helper text. |
+| `/items/new` | `CreateItemPage` | Signed in | Create listing form with image upload / URL support, required markers and helper text. |
 | `/items/:id/edit` | `EditItemPage` | Owner only | Server-checked owner listing modification and status management. |
 | `/dashboard` | `DashboardPage` | Signed in | 4 API-driven summary cards, quick actions, recent activity timeline. |
 | `/my-items` | `MyItemsPage` | Signed in | Manage inventory, status filters, archive with conflict check. |
@@ -217,13 +242,3 @@ npm run test:acceptance
 | `/incoming-requests`| `IncomingRequestsPage` | Signed in | Owner request decisions (Approve/Reject with 409 overlap handling), pickup/return confirmations. |
 | `/history` | `BorrowingHistoryPage` | Signed in | Completed and historical borrowing records with 1-5 star review submission. |
 | `*` | `NotFoundPage` | Public | 404 error page with navigation back to Browse. |
-
----
-
-## 10. Known Limitations & Explicit MVP Boundary
-
-As defined in the specification's explicit non-goals:
-- Payments and financial transactions are excluded (BorrowBack is a community resource sharing platform).
-- Direct in-app instant chat is excluded (contact is handled via pickup meeting notes).
-- Third-party image hosting is excluded (items use SVG-based category illustration tiles).
-- Microservices, geolocation maps, and external AI APIs are not included in this MVP.

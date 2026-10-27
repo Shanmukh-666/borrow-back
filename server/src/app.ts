@@ -32,22 +32,28 @@ app.use(
     origin: (origin, callback) => {
       // Allow requests with no origin (e.g. mobile apps, curl, server-to-server)
       if (!origin) return callback(null, true);
+      const envOrigins = (process.env.CLIENT_ORIGIN || '')
+        .split(',')
+        .map((o) => o.trim())
+        .filter(Boolean);
+
       const allowedOrigins = [
-        process.env.CLIENT_ORIGIN,
+        ...envOrigins,
         'http://localhost:5173',
         'http://127.0.0.1:5173',
         'http://localhost:3000',
         'http://127.0.0.1:3000',
-      ].filter(Boolean);
+      ];
 
       if (
         allowedOrigins.includes(origin) ||
         origin.startsWith('http://localhost:') ||
-        origin.startsWith('http://127.0.0.1:')
+        origin.startsWith('http://127.0.0.1:') ||
+        process.env.NODE_ENV !== 'production'
       ) {
         return callback(null, true);
       }
-      return callback(null, true); // Permissive in development
+      return callback(null, false);
     },
     credentials: true,
   })
