@@ -50,6 +50,8 @@ app.use(
 
       if (
         allowedOrigins.includes(origin) ||
+        origin.endsWith('.vercel.app') ||
+        /^https:\/\/.*\.vercel\.app$/.test(origin) ||
         origin.startsWith('http://localhost:') ||
         origin.startsWith('http://127.0.0.1:') ||
         process.env.NODE_ENV !== 'production'
