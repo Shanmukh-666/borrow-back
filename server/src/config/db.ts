@@ -1,11 +1,10 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import { MongoMemoryServer } from 'mongodb-memory-server';
 import { seedDatabase } from '../scripts/seed';
 
 dotenv.config();
 
-let inMemoryServer: MongoMemoryServer | null = null;
+let inMemoryServer: any = null;
 
 export const connectDB = async (uriOverride?: string): Promise<typeof mongoose> => {
   const targetUri = uriOverride || process.env.MONGODB_URI || 'mongodb://localhost:27017/borrowback';
@@ -28,6 +27,8 @@ export const connectDB = async (uriOverride?: string): Promise<typeof mongoose> 
     console.log(`[MongoDB] Falling back to In-Memory MongoDB Server for local development...`);
 
     try {
+      // Dynamically load in development fallback only
+      const { MongoMemoryServer } = require('mongodb-memory-server');
       inMemoryServer = await MongoMemoryServer.create({
         instance: {
           launchTimeout: 120000,
