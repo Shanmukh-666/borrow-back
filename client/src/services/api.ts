@@ -1,7 +1,9 @@
 import { ApiResponse } from '../types/ApiResponse';
 
 // Normalize API base URL: handle trailing slashes and ensure /api path
-let rawBase = (import.meta.env.VITE_API_URL || '/api').trim().replace(/\/+$/, '');
+const productionDefault = 'https://borrowback-server.onrender.com/api';
+const fallbackUrl = import.meta.env.DEV ? '/api' : productionDefault;
+let rawBase = (import.meta.env.VITE_API_URL || fallbackUrl).trim().replace(/\/+$/, '');
 if (/^https?:\/\//i.test(rawBase) && !rawBase.endsWith('/api')) {
   rawBase += '/api';
 }
