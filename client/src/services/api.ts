@@ -1,6 +1,11 @@
 import { ApiResponse } from '../types/ApiResponse';
 
-const BASE_URL = import.meta.env.VITE_API_URL || '/api';
+// Normalize API base URL: handle trailing slashes and ensure /api path
+let rawBase = (import.meta.env.VITE_API_URL || '/api').trim().replace(/\/+$/, '');
+if (/^https?:\/\//i.test(rawBase) && !rawBase.endsWith('/api')) {
+  rawBase += '/api';
+}
+const BASE_URL = rawBase;
 
 export class ApiErrorResponse extends Error {
   code: string;
