@@ -101,7 +101,7 @@ export const IncomingRequestsPage: React.FC = () => {
       )}
 
       {/* Filter Tabs */}
-      <div className="flex items-center gap-1.5 overflow-x-auto pb-2 border-b border-appBorder">
+      <div className="flex items-center gap-1.5 overflow-x-auto pb-2 border-b border-appBorder -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none">
         {filterTabs.map((tab) => (
           <button
             key={tab.key}

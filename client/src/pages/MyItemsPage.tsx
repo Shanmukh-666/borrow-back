@@ -113,6 +113,7 @@ export const MyItemsPage: React.FC = () => {
           variant="primary"
           icon={<PlusCircle className="w-4 h-4" />}
           onClick={() => navigate('/items/new')}
+          className="w-full sm:w-auto justify-center"
         >
           List an item
         </Button>

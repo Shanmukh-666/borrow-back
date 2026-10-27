@@ -6,9 +6,9 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-surface border-t border-appBorder mt-auto">
       {/* Community Trust Bar */}
-      <div className="border-b border-appBorder bg-slate-50/60 py-6">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-textMuted">
+      <div className="border-b border-appBorder bg-slate-50/60 py-5 sm:py-6">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 text-xs text-textMuted">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-lg bg-teal-50 border border-teal-200 flex items-center justify-center text-brand shrink-0">
                 <ShieldCheck className="w-4 h-4" />
@@ -43,10 +43,10 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Main Footer Links & Brand */}
-      <div className="max-w-[1200px] mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 pb-10 border-b border-appBorder">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 pb-8 sm:pb-10 border-b border-appBorder">
           {/* Brand info */}
-          <div className="md:col-span-2 space-y-3">
+          <div className="col-span-2 md:col-span-2 space-y-3">
             <Link to="/" className="inline-flex items-center gap-2.5 text-textPrimary font-bold text-xl tracking-tight">
               <div className="w-9 h-9 rounded-xl bg-teal-50 border border-teal-200 flex items-center justify-center text-brand shadow-xs">
                 <Package2 className="w-5 h-5 text-brand" />

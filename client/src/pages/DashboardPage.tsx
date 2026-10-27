@@ -68,104 +68,105 @@ export const DashboardPage: React.FC = () => {
       {error && <Toast type="error" message={error} onDismiss={() => setError(null)} />}
 
       {/* 4 Compact Summary Cards Driven by API Data */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
         {/* Card 1: Active listings */}
         <Link
           to="/my-items"
-          className="bg-surface rounded-card border border-appBorder border-t-4 border-t-brand p-5 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all group"
+          className="bg-surface rounded-2xl sm:rounded-card border border-appBorder border-t-4 border-t-brand p-3.5 sm:p-5 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all group flex flex-col justify-between"
         >
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-semibold text-textMuted uppercase tracking-wider">
-              My Active Listings
+          <div className="flex items-center justify-between mb-2 sm:mb-3">
+            <span className="text-[10px] sm:text-xs font-semibold text-textMuted uppercase tracking-wider line-clamp-1">
+              Active Listings
             </span>
-            <div className="w-8 h-8 rounded-lg bg-teal-50 border border-teal-200 flex items-center justify-center text-brand group-hover:scale-105 transition-transform">
-              <Boxes className="w-4 h-4" />
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-teal-50 border border-teal-200 flex items-center justify-center text-brand group-hover:scale-105 transition-transform shrink-0">
+              <Boxes className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
           </div>
-          <div className="text-3xl font-extrabold text-textPrimary tracking-tight">
-            {loading ? <Skeleton className="h-8 w-12" /> : summary?.activeListings ?? 0}
+          <div className="text-2xl sm:text-3xl font-extrabold text-textPrimary tracking-tight">
+            {loading ? <Skeleton className="h-7 w-10 sm:h-8 sm:w-12" /> : summary?.activeListings ?? 0}
           </div>
-          <p className="text-xs text-textMuted mt-1.5 flex items-center gap-1 group-hover:text-brand transition-colors font-medium">
-            Manage your listings <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+          <p className="text-[11px] sm:text-xs text-textMuted mt-1 sm:mt-1.5 flex items-center gap-1 group-hover:text-brand transition-colors font-medium truncate">
+            Manage listings <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform shrink-0" />
           </p>
         </Link>
 
         {/* Card 2: Incoming pending requests */}
         <Link
           to="/incoming-requests"
-          className="bg-surface rounded-card border border-appBorder border-t-4 border-t-amber-500 p-5 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all group"
+          className="bg-surface rounded-2xl sm:rounded-card border border-appBorder border-t-4 border-t-amber-500 p-3.5 sm:p-5 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all group flex flex-col justify-between"
         >
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-semibold text-textMuted uppercase tracking-wider">
+          <div className="flex items-center justify-between mb-2 sm:mb-3">
+            <span className="text-[10px] sm:text-xs font-semibold text-textMuted uppercase tracking-wider line-clamp-1">
               Incoming Pending
             </span>
-            <div className="w-8 h-8 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center text-appWarning group-hover:scale-105 transition-transform">
-              <ArrowDownLeft className="w-4 h-4" />
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center text-appWarning group-hover:scale-105 transition-transform shrink-0">
+              <ArrowDownLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
           </div>
-          <div className="text-3xl font-extrabold text-textPrimary tracking-tight">
-            {loading ? <Skeleton className="h-8 w-12" /> : summary?.incomingPendingRequests ?? 0}
+          <div className="text-2xl sm:text-3xl font-extrabold text-textPrimary tracking-tight">
+            {loading ? <Skeleton className="h-7 w-10 sm:h-8 sm:w-12" /> : summary?.incomingPendingRequests ?? 0}
           </div>
-          <p className="text-xs text-textMuted mt-1.5 flex items-center gap-1 group-hover:text-appWarning transition-colors font-medium">
-            Review incoming requests <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+          <p className="text-[11px] sm:text-xs text-textMuted mt-1 sm:mt-1.5 flex items-center gap-1 group-hover:text-appWarning transition-colors font-medium truncate">
+            Review incoming <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform shrink-0" />
           </p>
         </Link>
 
         {/* Card 3: Requests I sent */}
         <Link
           to="/my-requests"
-          className="bg-surface rounded-card border border-appBorder border-t-4 border-t-sky-500 p-5 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all group"
+          className="bg-surface rounded-2xl sm:rounded-card border border-appBorder border-t-4 border-t-sky-500 p-3.5 sm:p-5 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all group flex flex-col justify-between"
         >
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-semibold text-textMuted uppercase tracking-wider">
+          <div className="flex items-center justify-between mb-2 sm:mb-3">
+            <span className="text-[10px] sm:text-xs font-semibold text-textMuted uppercase tracking-wider line-clamp-1">
               Requests I Sent
             </span>
-            <div className="w-8 h-8 rounded-lg bg-sky-50 border border-sky-200 flex items-center justify-center text-sky-700 group-hover:scale-105 transition-transform">
-              <ArrowUpRight className="w-4 h-4" />
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-sky-50 border border-sky-200 flex items-center justify-center text-sky-700 group-hover:scale-105 transition-transform shrink-0">
+              <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
           </div>
-          <div className="text-3xl font-extrabold text-textPrimary tracking-tight">
-            {loading ? <Skeleton className="h-8 w-12" /> : summary?.requestsSent ?? 0}
+          <div className="text-2xl sm:text-3xl font-extrabold text-textPrimary tracking-tight">
+            {loading ? <Skeleton className="h-7 w-10 sm:h-8 sm:w-12" /> : summary?.requestsSent ?? 0}
           </div>
-          <p className="text-xs text-textMuted mt-1.5 flex items-center gap-1 group-hover:text-sky-700 transition-colors font-medium">
-            View outgoing requests <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+          <p className="text-[11px] sm:text-xs text-textMuted mt-1 sm:mt-1.5 flex items-center gap-1 group-hover:text-sky-700 transition-colors font-medium truncate">
+            View outgoing <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform shrink-0" />
           </p>
         </Link>
 
         {/* Card 4: Active borrowings */}
         <Link
           to="/history"
-          className="bg-surface rounded-card border border-appBorder border-t-4 border-t-emerald-500 p-5 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all group"
+          className="bg-surface rounded-2xl sm:rounded-card border border-appBorder border-t-4 border-t-emerald-500 p-3.5 sm:p-5 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all group flex flex-col justify-between"
         >
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-semibold text-textMuted uppercase tracking-wider">
-              Active Loans & Borrows
+          <div className="flex items-center justify-between mb-2 sm:mb-3">
+            <span className="text-[10px] sm:text-xs font-semibold text-textMuted uppercase tracking-wider line-clamp-1">
+              Active Loans
             </span>
-            <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center text-appSuccess group-hover:scale-105 transition-transform">
-              <Repeat className="w-4 h-4" />
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center text-appSuccess group-hover:scale-105 transition-transform shrink-0">
+              <Repeat className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
           </div>
-          <div className="text-3xl font-extrabold text-textPrimary tracking-tight">
-            {loading ? <Skeleton className="h-8 w-12" /> : summary?.activeBorrowings ?? 0}
+          <div className="text-2xl sm:text-3xl font-extrabold text-textPrimary tracking-tight">
+            {loading ? <Skeleton className="h-7 w-10 sm:h-8 sm:w-12" /> : summary?.activeBorrowings ?? 0}
           </div>
-          <p className="text-xs text-textMuted mt-1.5 flex items-center gap-1 group-hover:text-appSuccess transition-colors font-medium">
-            Track active handovers <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+          <p className="text-[11px] sm:text-xs text-textMuted mt-1 sm:mt-1.5 flex items-center gap-1 group-hover:text-appSuccess transition-colors font-medium truncate">
+            Track handovers <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform shrink-0" />
           </p>
         </Link>
       </div>
 
       {/* Quick Actions Strip */}
-      <div className="bg-surface rounded-card border border-appBorder p-5 shadow-xs flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-surface rounded-2xl sm:rounded-card border border-appBorder p-4 sm:p-5 shadow-xs flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
         <div>
           <h2 className="text-sm font-bold text-textPrimary">Quick actions</h2>
           <p className="text-xs text-textMuted mt-0.5">Frequent tasks for resource sharing.</p>
         </div>
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
           <Button
             size="sm"
             variant="primary"
             icon={<PlusCircle className="w-4 h-4" />}
             onClick={() => navigate('/items/new')}
+            className="w-full sm:w-auto justify-center"
           >
             List an item
           </Button>
@@ -174,6 +175,7 @@ export const DashboardPage: React.FC = () => {
             variant="outline"
             icon={<Search className="w-4 h-4" />}
             onClick={() => navigate('/browse')}
+            className="w-full sm:w-auto justify-center"
           >
             Browse items
           </Button>
@@ -182,6 +184,7 @@ export const DashboardPage: React.FC = () => {
             variant="secondary"
             icon={<ArrowDownLeft className="w-4 h-4" />}
             onClick={() => navigate('/incoming-requests')}
+            className="w-full sm:w-auto justify-center"
           >
             Review incoming requests
           </Button>

@@ -224,12 +224,12 @@ export const RequestCard: React.FC<RequestCardProps> = ({
       )}
 
       {/* Header: Title, Counterpart, Status */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-appBorder">
-        <div>
+      <div className="flex items-start sm:items-center justify-between gap-3 pb-4 border-b border-appBorder">
+        <div className="min-w-0">
           <div className="flex items-center gap-2 mb-1">
             <Link
               to={`/items/${itemId}`}
-              className="font-bold text-textPrimary hover:text-brand transition-colors text-base"
+              className="font-bold text-textPrimary hover:text-brand transition-colors text-base truncate"
             >
               {itemTitle}
             </Link>
@@ -305,7 +305,7 @@ export const RequestCard: React.FC<RequestCardProps> = ({
       </div>
 
       {/* Actions Bar */}
-      <div className="flex flex-wrap items-center justify-end gap-2.5 pt-2">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-2.5 pt-2">
         {/* Owner Decision on Pending */}
         {isOwner && request.status === 'pending' && (
           <>
@@ -314,6 +314,7 @@ export const RequestCard: React.FC<RequestCardProps> = ({
               variant="outline"
               onClick={() => setIsRejectOpen(true)}
               disabled={!!loadingAction}
+              className="w-full sm:w-auto justify-center"
             >
               Reject
             </Button>
@@ -322,6 +323,7 @@ export const RequestCard: React.FC<RequestCardProps> = ({
               variant="primary"
               onClick={handleApprove}
               loading={loadingAction === 'approve'}
+              className="w-full sm:w-auto justify-center"
             >
               Approve Request
             </Button>
@@ -335,6 +337,7 @@ export const RequestCard: React.FC<RequestCardProps> = ({
             variant="outline"
             onClick={() => setIsCancelOpen(true)}
             disabled={!!loadingAction}
+            className="w-full sm:w-auto justify-center"
           >
             Cancel Request
           </Button>
@@ -347,6 +350,7 @@ export const RequestCard: React.FC<RequestCardProps> = ({
             variant="primary"
             onClick={() => setIsPickupOpen(true)}
             disabled={!!loadingAction}
+            className="w-full sm:w-auto justify-center"
           >
             Confirm Item Pickup
           </Button>
@@ -360,6 +364,7 @@ export const RequestCard: React.FC<RequestCardProps> = ({
               variant="primary"
               onClick={() => setIsReturnOpen(true)}
               disabled={!!loadingAction}
+              className="w-full sm:w-auto justify-center"
             >
               Confirm Item Return
             </Button>
@@ -369,7 +374,7 @@ export const RequestCard: React.FC<RequestCardProps> = ({
         {request.status === 'completed' && showReviewButton && (
           <>
             {request.hasReviewed ? (
-              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-appSuccess bg-green-50 px-3 py-1.5 rounded-full border border-green-200">
+              <span className="inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-appSuccess bg-green-50 px-3 py-1.5 rounded-full border border-green-200">
                 <CheckCircle className="w-3.5 h-3.5" />
                 Review submitted
               </span>
@@ -379,6 +384,7 @@ export const RequestCard: React.FC<RequestCardProps> = ({
                 variant="secondary"
                 icon={<Star className="w-4 h-4 fill-amber-400 text-amber-400" />}
                 onClick={() => setIsReviewOpen(true)}
+                className="w-full sm:w-auto justify-center"
               >
                 Leave a review
               </Button>

@@ -33,8 +33,8 @@ export const Navbar: React.FC = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="sticky top-0 z-40 bg-surface/90 backdrop-blur-md border-b border-appBorder/80 h-[72px] transition-all">
-      <div className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
+    <header className="sticky top-0 z-40 bg-surface/90 backdrop-blur-md border-b border-appBorder/80 h-[68px] sm:h-[72px] transition-all">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
         {/* Brand Logo */}
         <Link
           to="/"
@@ -209,7 +209,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-surface border-b border-appBorder px-6 py-4 shadow-xl animate-in slide-in-from-top-2 duration-200">
+        <div className="md:hidden bg-surface border-b border-appBorder px-4 sm:px-6 py-4 shadow-xl animate-in slide-in-from-top-2 duration-200 max-h-[calc(100vh-4.5rem)] overflow-y-auto">
           <div className="flex flex-col gap-3">
             <Link
               to="/browse"

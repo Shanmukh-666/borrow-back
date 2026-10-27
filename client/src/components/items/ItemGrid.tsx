@@ -27,7 +27,7 @@ export const ItemGrid: React.FC<ItemGridProps> = ({
 }) => {
   if (loading) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {Array.from({ length: 6 }).map((_, index) => (
           <CardSkeleton key={index} />
         ))}
@@ -70,7 +70,7 @@ export const ItemGrid: React.FC<ItemGridProps> = ({
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
       {items.map((item) => (
         <ItemCard key={item.id} item={item} />
       ))}

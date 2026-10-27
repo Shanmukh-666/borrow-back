@@ -18,9 +18,9 @@ export const ItemFilters: React.FC<ItemFiltersProps> = ({ filters, onChange, onC
   );
 
   return (
-    <div className="bg-surface border border-appBorder rounded-card p-4 sm:p-5 mb-8 shadow-xs space-y-4">
+    <div className="bg-surface border border-appBorder rounded-2xl sm:rounded-card p-3.5 sm:p-5 mb-6 sm:mb-8 shadow-xs space-y-3 sm:space-y-4">
       {/* Category Quick Pills */}
-      <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+      <div className="flex items-center gap-1.5 overflow-x-auto pb-1.5 scrollbar-none -mx-3.5 px-3.5 sm:mx-0 sm:px-0">
         <button
           type="button"
           onClick={() => onChange({ category: undefined, page: 1 })}
@@ -51,7 +51,7 @@ export const ItemFilters: React.FC<ItemFiltersProps> = ({ filters, onChange, onC
         })}
       </div>
 
-      <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-3.5 pt-1">
+      <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-2.5 sm:gap-3.5 pt-1">
         {/* Search Input */}
         <div className="relative flex-1">
           <Search className="w-4 h-4 text-textMuted absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -59,8 +59,8 @@ export const ItemFilters: React.FC<ItemFiltersProps> = ({ filters, onChange, onC
             type="text"
             value={filters.search || ''}
             onChange={(e) => onChange({ search: e.target.value, page: 1 })}
-            placeholder="Search books, tools, electronics, camping gear..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-field border border-appBorder bg-surface text-sm text-textPrimary placeholder:text-textMuted focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand transition-colors"
+            placeholder="Search books, tools, electronics, gear..."
+            className="w-full pl-10 pr-4 py-2 sm:py-2.5 rounded-field border border-appBorder bg-surface text-sm text-textPrimary placeholder:text-textMuted focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand transition-colors"
           />
           {filters.search && (
             <button
@@ -73,14 +73,14 @@ export const ItemFilters: React.FC<ItemFiltersProps> = ({ filters, onChange, onC
           )}
         </div>
 
-        {/* Filter dropdowns */}
-        <div className="flex flex-wrap sm:flex-nowrap items-center gap-3">
+        {/* Filter dropdowns responsive grid */}
+        <div className="grid grid-cols-2 sm:flex sm:flex-nowrap items-center gap-2.5 sm:gap-3 w-full lg:w-auto">
           {/* Category Dropdown */}
-          <div className="w-full sm:w-auto">
+          <div className="col-span-1 sm:w-44">
             <select
               value={filters.category || 'all'}
               onChange={(e) => onChange({ category: e.target.value === 'all' ? undefined : e.target.value, page: 1 })}
-              className="w-full sm:w-44 px-3 py-2.5 rounded-field border border-appBorder bg-surface text-sm text-textBody focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand cursor-pointer"
+              className="w-full px-2.5 sm:px-3 py-2 sm:py-2.5 rounded-field border border-appBorder bg-surface text-xs sm:text-sm text-textBody focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand cursor-pointer"
             >
               <option value="all">All Categories</option>
               {ITEM_CATEGORIES.map((cat) => (
@@ -92,11 +92,11 @@ export const ItemFilters: React.FC<ItemFiltersProps> = ({ filters, onChange, onC
           </div>
 
           {/* Condition Dropdown */}
-          <div className="w-full sm:w-auto">
+          <div className="col-span-1 sm:w-36">
             <select
               value={filters.condition || 'all'}
               onChange={(e) => onChange({ condition: e.target.value === 'all' ? undefined : e.target.value, page: 1 })}
-              className="w-full sm:w-36 px-3 py-2.5 rounded-field border border-appBorder bg-surface text-sm text-textBody focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand cursor-pointer"
+              className="w-full px-2.5 sm:px-3 py-2 sm:py-2.5 rounded-field border border-appBorder bg-surface text-xs sm:text-sm text-textBody focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand cursor-pointer"
             >
               <option value="all">All Conditions</option>
               {ITEM_CONDITIONS.map((cond) => (
@@ -108,11 +108,11 @@ export const ItemFilters: React.FC<ItemFiltersProps> = ({ filters, onChange, onC
           </div>
 
           {/* Sort Dropdown */}
-          <div className="w-full sm:w-auto">
+          <div className="col-span-2 sm:col-span-1 sm:w-40">
             <select
               value={filters.sort || 'newest'}
               onChange={(e) => onChange({ sort: e.target.value, page: 1 })}
-              className="w-full sm:w-40 px-3 py-2.5 rounded-field border border-appBorder bg-surface text-sm text-textBody focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand cursor-pointer"
+              className="w-full px-2.5 sm:px-3 py-2 sm:py-2.5 rounded-field border border-appBorder bg-surface text-xs sm:text-sm text-textBody focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand cursor-pointer"
             >
               <option value="newest">Recently added</option>
               <option value="title_asc">Title A-Z</option>
@@ -123,13 +123,15 @@ export const ItemFilters: React.FC<ItemFiltersProps> = ({ filters, onChange, onC
 
           {/* Clear Filters Button */}
           {hasActiveFilters && (
-            <button
-              onClick={onClear}
-              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-textMuted hover:text-brand hover:bg-slate-50 rounded-lg transition-colors whitespace-nowrap"
-            >
-              <SlidersHorizontal className="w-3.5 h-3.5" />
-              Clear filters
-            </button>
+            <div className="col-span-2 sm:col-span-1 flex justify-center sm:justify-start">
+              <button
+                onClick={onClear}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-textMuted hover:text-brand hover:bg-slate-50 rounded-lg transition-colors whitespace-nowrap"
+              >
+                <SlidersHorizontal className="w-3.5 h-3.5" />
+                Clear filters
+              </button>
+            </div>
           )}
         </div>
       </div>

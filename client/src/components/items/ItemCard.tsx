@@ -101,7 +101,7 @@ export const ItemCard: React.FC<{ item: Item }> = ({ item }) => {
       <div>
         {/* Visual Showcase: Real Image or Category Graphic Banner */}
         {hasImage ? (
-          <div className="h-44 w-full relative overflow-hidden bg-slate-900">
+          <div className="h-40 sm:h-44 w-full relative overflow-hidden bg-slate-900">
             <img
               src={item.imageUrl!.trim()}
               alt={item.title}
@@ -112,13 +112,13 @@ export const ItemCard: React.FC<{ item: Item }> = ({ item }) => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/30 pointer-events-none" />
 
             {/* Badges Overlaid on top of real image */}
-            <div className="absolute top-3 left-3 z-10">
-              <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md shadow-sm border border-white/60 text-slate-800">
+            <div className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 z-10">
+              <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-white/95 backdrop-blur-md shadow-sm border border-white/60 text-slate-800">
                 {item.category}
               </span>
             </div>
 
-            <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5">
+            <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 z-10 flex items-center gap-1 sm:gap-1.5">
               {item.status === 'archived' && (
                 <span className="bg-white/95 backdrop-blur-md rounded-full shadow-sm">
                   <StatusBadge status="archived" size="sm" />
@@ -130,16 +130,16 @@ export const ItemCard: React.FC<{ item: Item }> = ({ item }) => {
             </div>
           </div>
         ) : (
-          <div className={`h-32 w-full bg-gradient-to-b ${theme.glow} border-b ${theme.border} flex items-center justify-between px-5 relative overflow-hidden`}>
+          <div className={`h-28 sm:h-32 w-full bg-gradient-to-b ${theme.glow} border-b ${theme.border} flex items-center justify-between px-4 sm:px-5 relative overflow-hidden`}>
             {/* Subtle background motif circle */}
             <div className="absolute -right-4 -bottom-6 w-24 h-24 rounded-full bg-white/40 blur-xs" />
             
-            <div className="w-12 h-12 rounded-xl bg-white shadow-xs border border-white/60 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-200">
-              {getCategoryIcon(item.category, 'w-6 h-6')}
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white shadow-xs border border-white/60 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-200">
+              {getCategoryIcon(item.category, 'w-5 h-5 sm:w-6 sm:h-6')}
             </div>
 
-            <div className="flex flex-col items-end gap-1.5 z-10">
-              <span className={`text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border ${theme.badge}`}>
+            <div className="flex flex-col items-end gap-1 sm:gap-1.5 z-10">
+              <span className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border ${theme.badge}`}>
                 {item.category}
               </span>
               <div className="flex items-center gap-1">
@@ -151,16 +151,16 @@ export const ItemCard: React.FC<{ item: Item }> = ({ item }) => {
         )}
 
         {/* Card Body */}
-        <div className="p-5">
+        <div className="p-4 sm:p-5">
           {/* Title */}
-          <h3 className="font-bold text-textPrimary text-base line-clamp-1 group-hover:text-brand transition-colors mb-2">
+          <h3 className="font-bold text-textPrimary text-sm sm:text-base line-clamp-1 group-hover:text-brand transition-colors mb-1.5 sm:mb-2">
             <Link to={`/items/${item.id}`} className="hover:underline">
               {item.title}
             </Link>
           </h3>
 
           {/* Description (2 lines clamp) */}
-          <p className="text-sm text-textBody line-clamp-2 mb-4 leading-relaxed">
+          <p className="text-xs sm:text-sm text-textBody line-clamp-2 mb-3.5 sm:mb-4 leading-relaxed">
             {item.description}
           </p>
 
@@ -177,12 +177,12 @@ export const ItemCard: React.FC<{ item: Item }> = ({ item }) => {
       </div>
 
       {/* Card Footer / Affordance */}
-      <div className="px-5 py-3.5 border-t border-appBorder bg-slate-50/50 flex items-center justify-between mt-auto">
+      <div className="px-4 sm:px-5 py-3 sm:py-3.5 border-t border-appBorder bg-slate-50/50 flex items-center justify-between mt-auto">
         <div className="flex items-center gap-2 text-xs text-textMuted">
-          <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-[10px]">
+          <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-[10px]">
             {item.owner?.name ? item.owner.name.charAt(0).toUpperCase() : 'U'}
           </div>
-          <span className="truncate max-w-[120px] font-medium text-textBody">
+          <span className="truncate max-w-[105px] sm:max-w-[125px] font-medium text-textBody">
             {item.owner?.name || 'Community Member'}
           </span>
         </div>
