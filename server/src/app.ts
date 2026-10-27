@@ -17,6 +17,9 @@ dotenv.config();
 
 const app: Application = express();
 
+// Enable trust proxy for Render, Railway, Heroku, and reverse proxies
+app.set('trust proxy', 1);
+
 // Serve static images
 app.use('/images', express.static(path.join(__dirname, '../public/images')));
 
