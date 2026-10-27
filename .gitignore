@@ -31,3 +31,6 @@ build/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Custom Render blueprint
+render.yaml
