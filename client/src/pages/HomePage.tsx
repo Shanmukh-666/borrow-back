@@ -56,10 +56,6 @@ export const HomePage: React.FC = () => {
       <section className="relative isolate grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
         {/* Left Column: Eyebrow, Headline, Supporting text, CTAs */}
         <div className="lg:col-span-7 space-y-5 sm:space-y-6 text-left">
-          <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-brand-tint text-brand text-xs font-semibold tracking-wide border border-teal-200/80 shadow-xs">
-            <Sparkles className="w-3.5 h-3.5 text-brand shrink-0" />
-            <span className="truncate">Community-Powered Resource Sharing</span>
-          </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-textPrimary leading-tight sm:leading-[1.12]">
             Borrow what you need. <br />
@@ -125,7 +121,7 @@ export const HomePage: React.FC = () => {
           </div>
 
           {/* Sample Card 2: Electronics (Camera) */}
-          <div className="bg-surface rounded-2xl border border-appBorder p-3 sm:p-3.5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all flex items-center gap-3 sm:gap-3.5 sm:translate-x-2 transform hover:-translate-y-0.5 duration-200">
+          <div className="bg-surface rounded-2xl border border-appBorder p-3 sm:p-3.5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all flex items-center gap-3 sm:gap-3.5 sm:-translate-x-6 transform hover:-translate-y-0.5 duration-200">
             <img
               src="/images/items/mirrorless-camera.jpg"
               alt="Sony Camera"

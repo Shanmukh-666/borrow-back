@@ -35,21 +35,31 @@ export const getDashboardSummary = async (req: AuthRequest, res: Response, next:
       .populate('borrower', 'name')
       .lean();
 
-    const formattedRecentActivity = recentRequests.map((r) => {
-      const isOwner = (r.owner as any)._id?.toString() === userId || (r.owner as any).id === userId;
-      return {
-        id: r._id.toString(),
-        type: 'request',
-        itemTitle: (r.item as any)?.title || 'Item',
-        itemCategory: (r.item as any)?.category,
-        role: isOwner ? 'owner' : 'borrower',
-        counterpartName: isOwner ? (r.borrower as any)?.name : (r.owner as any)?.name,
-        status: r.status,
-        startDate: r.startDate,
-        endDate: r.endDate,
-        updatedAt: r.updatedAt,
-      };
-    });
+    const formattedRecentActivity = recentRequests
+      .filter((r) => r && (r.owner || r.borrower))
+      .map((r) => {
+        const ownerId =
+          (r.owner as any)?._id?.toString() ||
+          (r.owner as any)?.id ||
+          r.owner?.toString();
+        const isOwner = Boolean(ownerId && ownerId === userId);
+        const counterpartName = isOwner
+          ? (r.borrower as any)?.name || 'Community Borrower'
+          : (r.owner as any)?.name || 'Community Lender';
+
+        return {
+          id: r._id.toString(),
+          type: 'request',
+          itemTitle: (r.item as any)?.title || 'Community Item',
+          itemCategory: (r.item as any)?.category || 'General',
+          role: isOwner ? 'owner' : 'borrower',
+          counterpartName,
+          status: r.status,
+          startDate: r.startDate,
+          endDate: r.endDate,
+          updatedAt: r.updatedAt,
+        };
+      });
 
     res.status(200).json({
       success: true,
@@ -110,7 +120,11 @@ export const getBorrowingHistory = async (req: AuthRequest, res: Response, next:
     const reviewedRequestMap = new Set(userReviews.map((rev) => rev.request.toString()));
 
     const formattedHistory = requests.map((r) => {
-      const isOwner = (r.owner as any)._id?.toString() === userId || (r.owner as any).id === userId;
+      const ownerId =
+        (r.owner as any)?._id?.toString() ||
+        (r.owner as any)?.id ||
+        r.owner?.toString();
+      const isOwner = Boolean(ownerId && ownerId === userId);
       return {
         ...r,
         id: r._id.toString(),

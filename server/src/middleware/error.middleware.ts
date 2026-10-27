@@ -63,6 +63,18 @@ export const errorHandler = (
     return;
   }
 
+  // Malformed JSON syntax error in request body
+  if (err instanceof SyntaxError && 'body' in err) {
+    res.status(400).json({
+      success: false,
+      error: {
+        code: 'BAD_REQUEST',
+        message: 'Malformed JSON payload in request body.',
+      },
+    });
+    return;
+  }
+
   // Unexpected errors
   console.error('[Internal Server Error]:', err);
   res.status(500).json({

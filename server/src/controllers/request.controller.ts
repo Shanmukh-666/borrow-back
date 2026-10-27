@@ -159,8 +159,17 @@ export const getRequestById = async (req: AuthRequest, res: Response, next: Next
       throw new AppError(404, 'REQUEST_NOT_FOUND', 'Request not found');
     }
 
-    const isOwner = request.owner._id.toString() === req.user.id;
-    const isBorrower = request.borrower._id.toString() === req.user.id;
+    const ownerId =
+      (request.owner as any)?._id?.toString() ||
+      (request.owner as any)?.id ||
+      request.owner?.toString();
+    const borrowerId =
+      (request.borrower as any)?._id?.toString() ||
+      (request.borrower as any)?.id ||
+      request.borrower?.toString();
+
+    const isOwner = Boolean(ownerId && ownerId === req.user.id);
+    const isBorrower = Boolean(borrowerId && borrowerId === req.user.id);
 
     if (!isOwner && !isBorrower) {
       throw new AppError(403, 'FORBIDDEN', 'You do not have permission to view this request');

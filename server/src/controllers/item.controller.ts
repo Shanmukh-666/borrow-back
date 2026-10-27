@@ -127,13 +127,17 @@ export const getItemById = async (req: AuthRequest, res: Response, next: NextFun
     }
 
     // If item is archived, only the owner can view it
-    const isOwner = req.user && item.owner._id.toString() === req.user.id;
+    const ownerId =
+      (item.owner as any)?._id?.toString() ||
+      (item.owner as any)?.id ||
+      item.owner?.toString();
+    const isOwner = Boolean(req.user && ownerId === req.user.id);
     if (item.status === 'archived' && !isOwner) {
       throw new AppError(404, 'ITEM_UNAVAILABLE', 'This listing is no longer active');
     }
 
     // Owner reviews summary
-    const ownerReviews = await Review.find({ reviewee: item.owner._id });
+    const ownerReviews = ownerId ? await Review.find({ reviewee: ownerId }) : [];
     const reviewCount = ownerReviews.length;
     const avgRating =
       reviewCount > 0
@@ -142,8 +146,8 @@ export const getItemById = async (req: AuthRequest, res: Response, next: NextFun
 
     const itemObj: any = item.toJSON();
     itemObj.ownerSummary = {
-      id: (item.owner as any)._id.toString(),
-      name: (item.owner as any).name,
+      id: ownerId || '',
+      name: (item.owner as any)?.name || 'Community Member',
       rating: avgRating,
       reviewCount,
     };

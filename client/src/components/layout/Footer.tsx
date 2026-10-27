@@ -58,10 +58,6 @@ export const Footer: React.FC = () => {
             <p className="text-xs text-textMuted max-w-sm leading-relaxed">
               A community-powered resource sharing platform. Borrow tools, textbooks, electronics, and gear from neighbors instead of buying things you only use once.
             </p>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-50/70 border border-teal-200/60 text-brand text-[11px] font-semibold">
-              <Sparkles className="w-3.5 h-3.5 text-brand" />
-              <span>Neighbor-to-neighbor resource network</span>
-            </div>
           </div>
 
           {/* Column 1: Platform */}
@@ -137,10 +133,6 @@ export const Footer: React.FC = () => {
         {/* Bottom copyright & status */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-textMuted gap-4">
           <p>© {new Date().getFullYear()} BorrowBack. Community Resource Sharing & Temporary Borrowing.</p>
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Platform Active</span>
-          </div>
         </div>
       </div>
     </footer>
