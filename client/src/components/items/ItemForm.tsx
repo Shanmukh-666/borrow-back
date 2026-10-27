@@ -39,6 +39,11 @@ const PRESET_PHOTOS = [
   { label: '📽️ HD Projector', url: '/images/items/projector.jpg' },
   { label: '🚲 Mountain Bike', url: '/images/items/mountain-bike.jpg' },
   { label: '🎲 Carrom / Games', url: '/images/items/carrom-board.jpg' },
+  { label: '🎸 Acoustic Guitar', url: '/images/items/acoustic-guitar.jpg' },
+  { label: '🧰 Hand Tool Kit', url: '/images/items/hand-tools.jpg' },
+  { label: '🔊 Party Speaker', url: '/images/items/party-speaker.jpg' },
+  { label: '🏸 Badminton Set', url: '/images/items/badminton-rackets.jpg' },
+  { label: '🍟 Air Fryer', url: '/images/items/air-fryer.jpg' },
   { label: '📱 Gimbal / Video', url: '/images/items/gimbal.jpg' },
   { label: '🔢 Scientific Calc', url: '/images/items/calculator.jpg' },
 ];
