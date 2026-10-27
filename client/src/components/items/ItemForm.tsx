@@ -302,14 +302,14 @@ export const ItemForm: React.FC<ItemFormProps> = ({
       <div>
         <Input
           label="Pickup area / Meeting spot"
-          placeholder="e.g. Near SRKR Eng College 2nd gate, Mavullamma Temple, or DNR College Ground"
+          placeholder="e.g. Near University Library, Community Center, or Main Campus Gate"
           value={pickupNote}
           onChange={(e) => {
             setPickupNote(e.target.value);
             if (errors.pickupNote) setErrors({ ...errors, pickupNote: '' });
           }}
           error={errors.pickupNote}
-          helperText="Suggest a safe, public neighborhood meeting spot in Bhimavaram or nearby towns (max 100 characters)."
+          helperText="Suggest a safe, public neighborhood meeting spot or campus landmark (max 100 characters)."
           maxLength={100}
         />
       </div>

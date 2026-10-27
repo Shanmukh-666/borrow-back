@@ -58,7 +58,7 @@ export const HomePage: React.FC = () => {
         <div className="lg:col-span-7 space-y-6 text-left">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-tint text-brand text-xs font-semibold tracking-wide border border-teal-200/80 shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-brand" />
-            <span>Community Resource Sharing • Bhimavaram & West Godavari</span>
+            <span>Community-Powered Resource Sharing</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-textPrimary leading-[1.12]">
@@ -67,7 +67,7 @@ export const HomePage: React.FC = () => {
           </h1>
 
           <p className="text-base sm:text-lg text-textBody max-w-xl leading-relaxed">
-            BorrowBack connects neighbors, students, and families across Bhimavaram, Palakollu, Tadepalligudem, and West Godavari to lend and borrow tools, electronics, academic books, and household essentials without buying.
+            BorrowBack connects neighbors, students, and community members to lend and borrow tools, electronics, academic books, and household essentials. Clear date tracking, mutual confirmations, and real accountability.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -77,7 +77,7 @@ export const HomePage: React.FC = () => {
               icon={<ArrowRight className="w-5 h-5" />}
               onClick={() => navigate('/browse')}
             >
-              Explore local items
+              Explore items
             </Button>
             <Button
               size="lg"
@@ -118,7 +118,7 @@ export const HomePage: React.FC = () => {
                 <span className="text-[10px] font-medium bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full border border-emerald-200">Like New</span>
               </div>
               <h4 className="text-sm font-bold text-textPrimary truncate mt-0.5">Bosch 18V Cordless Drill Set</h4>
-              <p className="text-xs text-textMuted truncate mt-0.5">Chinna Amiram, Near SRKR Eng College</p>
+              <p className="text-xs text-textMuted truncate mt-0.5">Near Engineering Campus Gate 2</p>
             </div>
           </div>
 
@@ -135,7 +135,7 @@ export const HomePage: React.FC = () => {
                 <span className="text-[10px] font-medium bg-sky-50 text-sky-700 px-2 py-0.5 rounded-full border border-sky-200">Like New</span>
               </div>
               <h4 className="text-sm font-bold text-textPrimary truncate mt-0.5">Sony Alpha 4K Mirrorless Camera</h4>
-              <p className="text-xs text-textMuted truncate mt-0.5">Gunupudi, Someswara Temple Arch</p>
+              <p className="text-xs text-textMuted truncate mt-0.5">Central Town Square / Community Center</p>
             </div>
           </div>
 
@@ -152,7 +152,7 @@ export const HomePage: React.FC = () => {
                 <span className="text-[10px] font-medium bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full border border-emerald-200">Good</span>
               </div>
               <h4 className="text-sm font-bold text-textPrimary truncate mt-0.5">Higher Engineering Mathematics</h4>
-              <p className="text-xs text-textMuted truncate mt-0.5">DNR College Ground Canteen, Bhimavaram</p>
+              <p className="text-xs text-textMuted truncate mt-0.5">College Ground Canteen / Library Area</p>
             </div>
           </div>
         </div>
@@ -347,7 +347,7 @@ export const HomePage: React.FC = () => {
             icon={<ArrowRight className="w-5 h-5 text-white" />}
             onClick={() => navigate('/browse')}
           >
-            Explore local catalog
+            Explore catalog
           </Button>
         </div>
       </section>

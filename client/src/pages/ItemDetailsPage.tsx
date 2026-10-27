@@ -165,7 +165,7 @@ export const ItemDetailsPage: React.FC = () => {
               </div>
               <div className="absolute bottom-4 left-4 right-4 z-10 flex items-center justify-between text-white text-xs">
                 <span className="bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
-                  Verified Local Item
+                  Verified Community Item
                 </span>
                 <span className="bg-emerald-600/90 backdrop-blur-md px-3 py-1 rounded-full font-semibold">
                   Free Community Borrowing

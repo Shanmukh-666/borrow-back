@@ -33,6 +33,7 @@ export const seedDatabase = async () => {
       { email: { $regex: /^maria_.*@example\.com$/i } },
       { email: { $regex: /^owner_.*@example\.com$/i } },
       { email: { $regex: /^borrower_.*@example\.com$/i } },
+      { email: { $regex: /@bhimavaram\.local$/i } },
     ],
   });
 
@@ -59,26 +60,26 @@ export const seedDatabase = async () => {
 
   const passwordHash = await bcrypt.hash('BorrowPass123!', 10);
 
-  // 3. Authentic Local Telugu Community Members (Bhimavaram & West Godavari)
+  // 3. Authentic Community Members
   const usersData = [
     {
       name: 'Shanmukh Motupalli',
-      email: 'shanmukh@bhimavaram.local',
+      email: 'shanmukh@borrowback.community',
       passwordHash,
     },
     {
       name: 'Ravi Varma Datla',
-      email: 'ravi.varma@bhimavaram.local',
+      email: 'ravi.varma@borrowback.community',
       passwordHash,
     },
     {
       name: 'Sneha Reddy',
-      email: 'sneha.reddy@bhimavaram.local',
+      email: 'sneha.reddy@borrowback.community',
       passwordHash,
     },
     {
       name: 'Sai Krishna Pinninti',
-      email: 'saikrishna@bhimavaram.local',
+      email: 'saikrishna@borrowback.community',
       passwordHash,
     },
   ];
